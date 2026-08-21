@@ -3,6 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import FamilyManager from '@/components/FamilyManager';
+import TransactionList from '@/components/TransactionList';
+import BudgetManager from '@/components/BudgetManager';
+import SIPTracker from '@/components/SIPTracker';
+import GoalTracker from '@/components/GoalTracker';
 import AuthModal from '@/components/AuthModal';
 import { 
   ShieldCheck, 
@@ -196,6 +200,14 @@ export default function AppMainPage() {
         <main className="flex-1 p-6 md:p-8 space-y-6 max-w-6xl mx-auto overflow-y-auto">
           {activeTab === 'Family Members' ? (
             <FamilyManager />
+          ) : activeTab === 'Transactions' ? (
+            <TransactionList />
+          ) : activeTab === 'Budget' ? (
+            <BudgetManager />
+          ) : activeTab === 'Investments / SIP' ? (
+            <SIPTracker />
+          ) : activeTab === 'Goals' ? (
+            <GoalTracker />
           ) : (
             <>
               {/* Header Overview */}
@@ -205,6 +217,13 @@ export default function AppMainPage() {
                   <p className="text-sm text-slate-500">Welcome back, {user?.name || 'Shekhar Rai'}. Here is your family&apos;s financial status.</p>
                 </div>
                 <div className="flex gap-3">
+                  <button 
+                    onClick={() => setActiveTab('Transactions')}
+                    className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition-colors shadow-xs flex items-center space-x-2"
+                  >
+                    <CreditCard className="w-4 h-4" />
+                    <span>View Transactions</span>
+                  </button>
                   <button 
                     onClick={() => setActiveTab('Family Members')}
                     className="bg-white border border-slate-200 px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors shadow-xs flex items-center space-x-2"
@@ -222,16 +241,16 @@ export default function AppMainPage() {
                     <CheckCircle2 className="w-4 h-4" />
                   </div>
                   <span className="text-xs font-bold uppercase tracking-wide text-emerald-700">
-                    PHASE 2 COMPLETE: Authentication &amp; Family Management
+                    PHASE 4 COMPLETE: Budgeting, SIPs &amp; Milestone Goals
                   </span>
                 </div>
 
                 <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900">
-                  User Authentication &amp; Family Member Management
+                  Category Budgets, Mutual Fund SIPs &amp; Savings Goals
                 </h1>
 
                 <p className="text-slate-600 text-sm max-w-2xl leading-relaxed">
-                  Phase 2 features are live! You can now register new users, sign in with JWT authentication, manage family profiles, add family members with Nepal bank accounts, and configure income targets.
+                  Phase 4 is active! Configure monthly category limits with real-time alert thresholds, track automated Systematic Investment Plans in Nepalese mutual funds (Nabil, Global IME, NIC Asia), and monitor joint family savings milestones.
                 </p>
 
                 {seedMessage && (

@@ -744,6 +744,16 @@ export const db = {
     writeDB(data);
     return data.transactions[index];
   },
+  deleteTransaction: (id: string): boolean => {
+    const data = readDB();
+    const initialLength = data.transactions.length;
+    data.transactions = data.transactions.filter((t) => t.id !== id);
+    if (data.transactions.length !== initialLength) {
+      writeDB(data);
+      return true;
+    }
+    return false;
+  },
 
   // Budgets
   getBudgetsByFamily: (familyId: string): Budget[] => {

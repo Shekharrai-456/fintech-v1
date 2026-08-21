@@ -72,7 +72,8 @@ export interface Budget {
   family_id: string;
   category: CategoryType;
   monthly_budget: number;
-  month_year: string; // YYYY-MM
+  monthly_limit?: number;
+  month_year?: string; // YYYY-MM
   created_at: string;
 }
 
@@ -82,9 +83,11 @@ export interface SIP {
   family_member_id: string;
   fund_name: string;
   monthly_amount: number;
-  frequency: 'monthly' | 'quarterly';
-  start_date: string; // YYYY-MM-DD
-  duration_months: number;
+  frequency?: 'monthly' | 'quarterly';
+  start_date?: string; // YYYY-MM-DD
+  sip_date?: number;
+  folio_number?: string;
+  duration_months?: number;
   goal_id?: string;
   status: 'active' | 'paused' | 'completed';
   created_at: string;
@@ -94,11 +97,12 @@ export interface Goal {
   id: string;
   family_id: string;
   family_member_id?: string; // Optional if family goal
-  name: string;
+  name?: string;
+  title?: string;
   target_amount: number;
   current_amount: number;
   target_date: string; // YYYY-MM-DD
-  category: 'Education' | 'Emergency Fund' | 'House' | 'Retirement' | 'Vacation' | 'Other';
+  category?: 'Education' | 'Emergency Fund' | 'House' | 'Retirement' | 'Vacation' | 'Other' | string;
   status: 'in_progress' | 'completed';
   created_at: string;
 }
@@ -107,6 +111,7 @@ export interface MutualFund {
   id: string;
   name: string;
   category: string;
+  fund_manager?: string;
   return_1yr: number; // percentage
   return_3yr: number; // percentage
   risk_level: 'Low' | 'Moderate' | 'High';
