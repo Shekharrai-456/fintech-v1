@@ -1,25 +1,19 @@
-import type {Metadata} from 'next';
-import './globals.css'; // Global styles
+import type { Metadata } from 'next';
+import './globals.css';
+import { AuthProvider } from '@/context/AuthContext';
 
 export const metadata: Metadata = {
-  title: 'My Google AI Studio App',
-  description: 'An application built with Google AI Studio.',
-  openGraph: {
-    title: 'My Google AI Studio App',
-    description: 'An application built with Google AI Studio.',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'My Google AI Studio App',
-    description: 'An application built with Google AI Studio.',
-  },
+  title: 'FamilyFin AI - Family Financial Intelligence Platform',
+  description: 'AI-Powered Family Financial Intelligence Platform for tracking transactions, SIPs, budgets, and AI insights.',
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning className="bg-[#F8FAFC] antialiased">
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }
+
