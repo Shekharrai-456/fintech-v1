@@ -7,6 +7,7 @@ import TransactionList from '@/components/TransactionList';
 import BudgetManager from '@/components/BudgetManager';
 import SIPTracker from '@/components/SIPTracker';
 import GoalTracker from '@/components/GoalTracker';
+import AIAdvisor from '@/components/AIAdvisor';
 import AuthModal from '@/components/AuthModal';
 import { 
   ShieldCheck, 
@@ -81,8 +82,9 @@ export default function AppMainPage() {
           <div>
             <div className="flex items-center space-x-2">
               <span className="font-extrabold text-xl tracking-tight text-slate-900">FAMILYFIN AI</span>
-              <span className="bg-indigo-50 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded-full border border-indigo-100">
-                Phase 2 Active
+              <span className="bg-emerald-50 text-emerald-700 text-xs font-semibold px-2.5 py-0.5 rounded-full border border-emerald-100 flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-emerald-600" />
+                <span>Phase 5 Complete</span>
               </span>
             </div>
             <p className="text-xs text-slate-500 hidden sm:block">
@@ -208,6 +210,8 @@ export default function AppMainPage() {
             <SIPTracker />
           ) : activeTab === 'Goals' ? (
             <GoalTracker />
+          ) : activeTab === 'AI Advisor' ? (
+            <AIAdvisor />
           ) : (
             <>
               {/* Header Overview */}
@@ -241,16 +245,16 @@ export default function AppMainPage() {
                     <CheckCircle2 className="w-4 h-4" />
                   </div>
                   <span className="text-xs font-bold uppercase tracking-wide text-emerald-700">
-                    PHASE 4 COMPLETE: Budgeting, SIPs &amp; Milestone Goals
+                    ALL PHASES COMPLETE: Gemini AI Advisor &amp; Wealth Insights
                   </span>
                 </div>
 
                 <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900">
-                  Category Budgets, Mutual Fund SIPs &amp; Savings Goals
+                  AI-Powered Family Financial Intelligence
                 </h1>
 
                 <p className="text-slate-600 text-sm max-w-2xl leading-relaxed">
-                  Phase 4 is active! Configure monthly category limits with real-time alert thresholds, track automated Systematic Investment Plans in Nepalese mutual funds (Nabil, Global IME, NIC Asia), and monitor joint family savings milestones.
+                  FAMILYFIN AI is fully operational! Manage multi-member family workspaces, track bank statements, enforce category budgets, automate mutual fund SIPs, monitor joint savings goals, and run AI Financial Health Audits powered by Gemini.
                 </p>
 
                 {seedMessage && (
@@ -360,18 +364,19 @@ export default function AppMainPage() {
                     <div className="w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center animate-pulse">
                       <Bot className="w-4 h-4 text-white" />
                     </div>
-                    <h3 className="font-bold text-sm tracking-wide text-indigo-100 uppercase">AI Advisor Insight</h3>
+                    <h3 className="font-bold text-sm tracking-wide text-indigo-100 uppercase">Gemini AI Advisor Insights</h3>
                   </div>
                   <p className="text-xs text-indigo-200 leading-relaxed">
-                    &quot;Your family workspace is ready. You have 4 members registered with monthly income targets totaling Rs. 235,000.&quot;
+                    &quot;Your family financial health score is active! Run contextual audits on remittance allocations, mutual fund SIP returns, and category budget limits.&quot;
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
                   <button
-                    onClick={() => setActiveTab('Family Members')}
-                    className="bg-white text-indigo-900 px-4 py-2 rounded-lg text-xs font-bold hover:bg-indigo-50 transition-colors shadow-sm"
+                    onClick={() => setActiveTab('AI Advisor')}
+                    className="bg-white text-indigo-900 px-4 py-2 rounded-lg text-xs font-bold hover:bg-indigo-50 transition-colors shadow-sm flex items-center gap-1.5"
                   >
-                    View Family Members →
+                    <span>Launch AI Financial Advisor</span>
+                    <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
                   </button>
                 </div>
               </div>

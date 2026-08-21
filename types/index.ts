@@ -63,6 +63,7 @@ export interface Transaction {
   merchant?: string;
   is_unusual?: boolean;
   unusual_reason?: string;
+  is_remittance?: boolean;
   confidence?: number;
   created_at: string;
 }
